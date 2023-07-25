@@ -10,7 +10,15 @@ export class UserProfileComponent {
   userAge: number = 22;
   userEmail: string = 'haganesh2000@gmail.com';
 
-  changeName(): void {
+  change(): void {
     this.userName = 'Gattu';
+    this.userAge = 20;
+    this.userEmail = 'ganeshha2000@gmail.com';
   }
+  // changeAge(): void {
+  //   this.userAge = 20;
+  // }
+  // changeEmail(): void {
+  //   this.userEmail = 'ganeshha2000@gmail.com';
+  // }
 }
