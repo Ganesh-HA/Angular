@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-user-profile',
@@ -6,19 +6,44 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent {
-  userName: string = 'Ganesh HA';
+  @ViewChild('inputField') inputField?: ElementRef;
+  userName: string = 'Ganesh H A';
   userAge: number = 22;
-  userEmail: string = 'haganesh2000@gmail.com';
-
-  change(): void {
-    this.userName = 'Gattu';
-    this.userAge = 20;
-    this.userEmail = 'ganeshha2000@gmail.com';
+  userEmail: string = 'ganesh@gmail.com';
+  flagName: boolean=false;
+  flagAge: boolean=false;
+  flagEmail: boolean=false;
+  changeName(): void {
+    this.userName = '';
+    if (this.inputField?.nativeElement) {
+      this.inputField.nativeElement.focus();
+    }
   }
-  // changeAge(): void {
-  //   this.userAge = 20;
-  // }
-  // changeEmail(): void {
-  //   this.userEmail = 'ganeshha2000@gmail.com';
-  // }
+  onName(){
+   if (!this.userName) {
+      this.userName='';
+      this.flagName=true;
+   }
+   else {
+      this.flagName=false;
+   }
+  }
+  onAge(){
+   if (!this.userAge) {
+      this.userAge=0;
+      this.flagAge=true;
+   }
+   else {
+      this.flagAge=false;
+   }
+  }
+  onChange(){
+   if (!this.userEmail.endsWith('@gmail.com')) {
+      this.userEmail='';
+      this.flagEmail=true;
+   }
+   else {
+      this.flagEmail=false;
+   }
+  }
 }
